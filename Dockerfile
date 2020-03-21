@@ -1,4 +1,4 @@
-FROM ich777/wine-baseimage
+FROM ich777/winehq-baseimage
 
 LABEL maintainer="admin@minenet.at"
 
