@@ -34,7 +34,7 @@ if [ ! -f ${DATA_DIR}/main/iw_dlc3_00.iwd ]; then
 		unzip -o ${DATA_DIR}/iw4x_dlc.zip
 		rm ${DATA_DIR}/iw4x_dlc.zip
 	else
-		echo "---IW4x DLC not found, downloading---"
+		echo "---IW4x DLC not found, downloading, please be patient this can take a very long time---"
 		cd ${DATA_DIR}
 		if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_dlc.zip "${IW4X_DLC_URL}" ; then
 			echo "---Successfully downloaded IW4x DLC!---"
@@ -53,7 +53,7 @@ if [ ! -f ${DATA_DIR}/main/iw_dlc3_00.iwd ]; then
 	fi
 fi
 
-if [ "${FORCE_UPDATE}" == "true"]; then
+if [ "${FORCE_UPDATE}" == "true" ]; then
 	echo "---Forcing update---"
 	if [ -f ${DATA_DIR}/iw4x_files.zip ]; then
 		echo "---'iw4x_files.zip' found, extracting---"
