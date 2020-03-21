@@ -53,10 +53,41 @@ else
 fi
 
 echo "---Prepare Server---"
+if [ ! -d ${DATA_DIR}/players ]; then
+	mkdir ${DATA_DIR}/players
+fi
+if [ ! -d ${DATA_DIR}/userraw ]; then
+	mkdir ${DATA_DIR}/userraw
+fi
+echo "---Checking for 'server.cfg'---"
+if [ ! -f ${DATA_DIR}/players/server.cfg ]; then
+	echo "---No 'server.cfg' found, downloading---"
+    cd ${DATA_DIR}/players
+	if wget -q -nc --show-progress --progress=bar:force:noscroll -O server.cfg https://raw.githubusercontent.com/ich777/docker-iw4x-server/master/config/server.cfg ; then
+		echo "---Successfully downloaded 'server.cfg'!---"
+	else
+		echo "---Something went wrong, can't download 'server.cfg', putting server in sleep mode---"
+		sleep infinity
+	fi
+else
+	echo "---'server.cfg' found!---"
+fi
+
+echo "---Checking for 'playlists.info'---"
+if [ ! -f ${DATA_DIR}/userraw/playlists.info ]; then
+	echo "---No 'playlists.info' found, downloading---"
+    cd ${DATA_DIR}/userraw
+	if wget -q -nc --show-progress --progress=bar:force:noscroll -O playlists.info https://raw.githubusercontent.com/ich777/docker-iw4x-server/master/config/playlists.info ; then
+		echo "---Successfully downloaded 'playlists.info'!---"
+	else
+		echo "---Something went wrong, can't download 'playlists.info', putting server in sleep mode---"
+		sleep infinity
+	fi
+else
+	echo "---'playlists.info' found!---"
+fi
+
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
-echo "---Sleep zZz---"
-sleep infinity
-
 cd ${DATA_DIR}
-wine iw4x.exe -dedicated ${GAME_PARAMS}
+wine iw4x.exe -dedicated +set net_port ${GAME_PORT} ${GAME_PARAMS}
