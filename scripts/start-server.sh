@@ -1,30 +1,106 @@
 #!/bin/bash
 echo "---Checking if IW4x is installed---"
 if [ ! -f ${DATA_DIR}/iw4x.exe ]; then
-	echo "---IW4x not found, downloading---"
-	cd ${DATA_DIR}
-	if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_files.zip "${IW4X_DL_URL}" ; then
-		echo "---Successfully downloaded IW4x!---"
+	if [ -f ${DATA_DIR}/iw4x_files.zip ]; then
+		echo "---'iw4x_files.zip' found, extracting---"
+		cd ${DATA_DIR}
+		unzip -o ${DATA_DIR}/iw4x_files.zip
+		rm ${DATA_DIR}/iw4x_files.zip
 	else
-		echo "---Something went wrong, can't download IW4x, putting server in sleep mode---"
-		sleep infinity
+		echo "---IW4x not found, downloading---"
+		cd ${DATA_DIR}
+		if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_files.zip "${IW4X_DL_URL}" ; then
+			echo "---Successfully downloaded IW4x!---"
+		else
+			echo "-----------------------------------------------------------------------------"
+			echo "---Something went wrong, can't download IW4x, putting server in sleep mode---"
+			echo "-----------------------------------------------------------------------------"
+			echo "---------------------------MANUAL INSTALLATION:------------------------------"
+            echo "---You can also download the file 'iw4x_files.zip' manually and put it in----"
+			echo "----------------------the main directory of the server-----------------------"
+            echo "-----------------------------------------------------------------------------"
+			sleep infinity
+		fi
+		unzip -o ${DATA_DIR}/iw4x_files.zip
+		rm ${DATA_DIR}/iw4x_files.zip
 	fi
-	unzip -o ${DATA_DIR}/iw4x_files.zip
-	rm ${DATA_DIR}/iw4x_files.zip
 fi
 
 echo "---Checking if IW4x DLC is installed---"
-if [ ! -f ${DATA_DIR}/iw4x.exe ]; then
-	echo "---IW4x not found, downloading---"
-	cd ${DATA_DIR}
-	if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_dlc.zip "${IW4X_DLC_URL}" ; then
-		echo "---Successfully downloaded IW4x DLC!---"
+if [ ! -f ${DATA_DIR}/main/iw_dlc3_00.iwd ]; then
+	if [ -f ${DATA_DIR}/iw4x_dlc.zip ]; then
+		echo "---'iw4x_dlc.zip' found, extracting---"
+		cd ${DATA_DIR}
+		unzip -o ${DATA_DIR}/iw4x_dlc.zip
+		rm ${DATA_DIR}/iw4x_dlc.zip
 	else
-		echo "---Something went wrong, can't download IW4x DLC, putting server in sleep mode---"
+		echo "---IW4x DLC not found, downloading---"
+		cd ${DATA_DIR}
+		if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_dlc.zip "${IW4X_DLC_URL}" ; then
+			echo "---Successfully downloaded IW4x DLC!---"
+		else
+			echo "---------------------------------------------------------------------------------"
+			echo "---Something went wrong, can't download IW4x DLC, putting server in sleep mode---"
+			echo "---------------------------------------------------------------------------------"
+			echo "-----------------------------MANUAL INSTALLATION:--------------------------------"
+            echo "------You can also download the file 'iw4x_dlc.zip' manually and put it in-------"
+			echo "------------------------the main directory of the server-------------------------"
+            echo "---------------------------------------------------------------------------------"
 		sleep infinity
+		fi
+		unzip -o ${DATA_DIR}/iw4x_dlc.zip
+		rm ${DATA_DIR}/iw4x_dlc.zip
 	fi
-	unzip -o ${DATA_DIR}/iw4x_dlc.zip
-	rm ${DATA_DIR}/iw4x_dlc.zip
+fi
+
+if [ "${FORCE_UPDATE}" == "true"]; then
+	echo "---Forcing update---"
+	if [ -f ${DATA_DIR}/iw4x_files.zip ]; then
+		echo "---'iw4x_files.zip' found, extracting---"
+		cd ${DATA_DIR}
+		unzip -o ${DATA_DIR}/iw4x_files.zip
+		rm ${DATA_DIR}/iw4x_files.zip
+	else
+		echo "---Downloading IW4x---"
+		cd ${DATA_DIR}
+		if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_files.zip "${IW4X_DL_URL}" ; then
+			echo "---Successfully downloaded IW4x!---"
+		else
+			echo "-----------------------------------------------------------------------------"
+			echo "---Something went wrong, can't download IW4x, putting server in sleep mode---"
+			echo "-----------------------------------------------------------------------------"
+			echo "---------------------------MANUAL INSTALLATION:------------------------------"
+            echo "---You can also download the file 'iw4x_files.zip' manually and put it in----"
+			echo "----------------------the main directory of the server-----------------------"
+            echo "-----------------------------------------------------------------------------"
+			sleep infinity
+		fi
+		unzip -o ${DATA_DIR}/iw4x_files.zip
+		rm ${DATA_DIR}/iw4x_files.zip
+	fi
+	if [ -f ${DATA_DIR}/iw4x_dlc.zip ]; then
+		echo "---'iw4x_dlc.zip' found, extracting---"
+		cd ${DATA_DIR}
+		unzip -o ${DATA_DIR}/iw4x_dlc.zip
+		rm ${DATA_DIR}/iw4x_dlc.zip
+	else
+		echo "---Downloading IW4x DLC---"
+		cd ${DATA_DIR}
+		if wget -q -nc --show-progress --progress=bar:force:noscroll -O iw4x_dlc.zip "${IW4X_DLC_URL}" ; then
+			echo "---Successfully downloaded IW4x DLC!---"
+		else
+			echo "---------------------------------------------------------------------------------"
+			echo "---Something went wrong, can't download IW4x DLC, putting server in sleep mode---"
+			echo "---------------------------------------------------------------------------------"
+			echo "-----------------------------MANUAL INSTALLATION:--------------------------------"
+            echo "------You can also download the file 'iw4x_dlc.zip' manually and put it in-------"
+			echo "------------------------the main directory of the server-------------------------"
+            echo "---------------------------------------------------------------------------------"
+		sleep infinity
+		fi
+		unzip -o ${DATA_DIR}/iw4x_dlc.zip
+		rm ${DATA_DIR}/iw4x_dlc.zip
+	fi
 fi
 
 echo "---Checking if gamefiles are in place---"
@@ -95,7 +171,6 @@ if [ ! -f ${DATA_DIR}/userraw/playlists.info ]; then
 else
 	echo "---'playlists.info' found!---"
 fi
-
 chmod -R ${DATA_PERM} ${DATA_DIR}
 
 cd ${DATA_DIR}
