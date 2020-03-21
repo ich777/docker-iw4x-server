@@ -52,6 +52,9 @@ else
 	echo "---WINE properly set up---"
 fi
 
+echo "---Prepare Server---"
+chmod -R ${DATA_PERM} ${DATA_DIR}
+
 echo "---Sleep zZz---"
 sleep infinity
 
