@@ -9,6 +9,7 @@ RUN apt-get update && \
 ENV DATA_DIR="/iw4x"
 ENV GAME_PORT=27060
 ENV GAME_PARAMS="+exec server.cfg +sv_maxclients 12 +set fs_game mods/bots +set playlistFilename playlists.info"
+ENV FORCE_UPDATE=""
 ENV IW4X_DL_URL="https://dss0.cc/updater/iw4x_files.zip"
 ENV IW4X_DLC_URL="https://iw4x-my.sharepoint.com/:u:/g/personal/emosewaj_iw4x_onmicrosoft_com/EYnWYmCXExpEvn-bL2262Q0BSy0jVZF0FXslvpJEDPE5Fw?e=gPx8RF&download=1"
 ENV UMASK=000
