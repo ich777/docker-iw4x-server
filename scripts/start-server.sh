@@ -36,7 +36,7 @@ fi
 export WINEARCH=win32
 export WINEPREFIX=/iw4x/WINE32
 echo "---Checking if WINE workdirectory is present---"
-if [ ! -d ${DATA_DIR}/WINE32]; then
+if [ ! -d ${DATA_DIR}/WINE32 ]; then
 	echo "---WINE workdirectory not found, creating please wait...---"
 	mkdir ${DATA_DIR}/WINE32
 else
