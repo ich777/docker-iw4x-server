@@ -105,7 +105,13 @@ fi
 
 echo "---Checking if gamefiles are in place---"
 if [ ! -f ${DATA_DIR}/main/iw_00.iwd ]; then
+	echo "---------------------------------------------------------"
 	echo "---Gamefiles not found, putting server into sleep mode---"
+	echo "----Please put your whole gamefiles into your server-----"
+	echo "-----------directory and restart the container-----------"
+	echo "----------------------ATTENTION:-------------------------"
+	echo "----I recommend you to NOT replace any files if asked----"
+	echo "---------------------------------------------------------"
 	sleep infinity
 else
 	echo "---Gamefiles found!---"
