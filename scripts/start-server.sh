@@ -60,6 +60,13 @@ if [ ! -d ${DATA_DIR}/userraw ]; then
 	mkdir ${DATA_DIR}/userraw
 fi
 echo "---Checking for 'server.cfg'---"
+if [ -f ${DATA_DIR}/main/server.cfg ]; then
+	echo "-------------------------------------------------------------------------------"
+	echo "---------'server.cfg' in folder ${DATA_DIR}/main found, renaming it to---------"
+	echo "---server.cfg.bak, please put server.cfg files in folder ${DATA_DIR}/players---"
+	echo "-------------------------------------------------------------------------------"
+	mv ${DATA_DIR}/main/server.cfg ${DATA_DIR}/main/server.cfg.bak
+fi
 if [ ! -f ${DATA_DIR}/players/server.cfg ]; then
 	echo "---No 'server.cfg' found, downloading---"
     cd ${DATA_DIR}/players
