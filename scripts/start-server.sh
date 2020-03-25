@@ -5,7 +5,6 @@ if [ ! -f ${DATA_DIR}/iw4x.exe ]; then
 		echo "---'iw4x_files.zip' found, extracting---"
 		cd ${DATA_DIR}
 		unzip -o ${DATA_DIR}/iw4x_files.zip
-		rm ${DATA_DIR}/iw4x_files.zip
 	else
 		echo "---IW4x not found, downloading---"
 		cd ${DATA_DIR}
@@ -22,7 +21,6 @@ if [ ! -f ${DATA_DIR}/iw4x.exe ]; then
 			sleep infinity
 		fi
 		unzip -o ${DATA_DIR}/iw4x_files.zip
-		rm ${DATA_DIR}/iw4x_files.zip
 	fi
 fi
 
@@ -32,7 +30,6 @@ if [ ! -f ${DATA_DIR}/main/iw_dlc3_00.iwd ]; then
 		echo "---'iw4x_dlc.zip' found, extracting---"
 		cd ${DATA_DIR}
 		unzip -o ${DATA_DIR}/iw4x_dlc.zip
-		rm ${DATA_DIR}/iw4x_dlc.zip
 	else
 		echo "---IW4x DLC not found, downloading, please be patient this can take a very long time---"
 		cd ${DATA_DIR}
@@ -49,7 +46,6 @@ if [ ! -f ${DATA_DIR}/main/iw_dlc3_00.iwd ]; then
 		sleep infinity
 		fi
 		unzip -o ${DATA_DIR}/iw4x_dlc.zip
-		rm ${DATA_DIR}/iw4x_dlc.zip
 	fi
 fi
 
@@ -59,7 +55,6 @@ if [ "${FORCE_UPDATE}" == "true" ]; then
 		echo "---'iw4x_files.zip' found, extracting---"
 		cd ${DATA_DIR}
 		unzip -o ${DATA_DIR}/iw4x_files.zip
-		rm ${DATA_DIR}/iw4x_files.zip
 	else
 		echo "---Downloading IW4x---"
 		cd ${DATA_DIR}
@@ -76,13 +71,11 @@ if [ "${FORCE_UPDATE}" == "true" ]; then
 			sleep infinity
 		fi
 		unzip -o ${DATA_DIR}/iw4x_files.zip
-		rm ${DATA_DIR}/iw4x_files.zip
 	fi
 	if [ -f ${DATA_DIR}/iw4x_dlc.zip ]; then
 		echo "---'iw4x_dlc.zip' found, extracting---"
 		cd ${DATA_DIR}
 		unzip -o ${DATA_DIR}/iw4x_dlc.zip
-		rm ${DATA_DIR}/iw4x_dlc.zip
 	else
 		echo "---Downloading IW4x DLC---"
 		cd ${DATA_DIR}
@@ -99,7 +92,6 @@ if [ "${FORCE_UPDATE}" == "true" ]; then
 		sleep infinity
 		fi
 		unzip -o ${DATA_DIR}/iw4x_dlc.zip
-		rm ${DATA_DIR}/iw4x_dlc.zip
 	fi
 fi
 
