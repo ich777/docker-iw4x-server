@@ -1,3 +1,5 @@
+# DEPRECATED
+
 # IW4x Docker optimized for Unraid
 This Docker will download and install a simple IW4x Server.
 
