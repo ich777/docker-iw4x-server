@@ -7,7 +7,7 @@ This Docker will download and install a simple IW4x Server.
 
 **DOWNLOAD NOTICE:** If a download fails or is not available you can simply put the .zip files in the server directory and the container will extract the files and start the server.
 
-**WINE NOTICE:** Since this container runs with WINE i can't garantee that it will not crash or other weird behavoir.
+**WINE NOTICE:** Since this container runs with WINE i can't guarantee that it will not crash or other weird behavior.
 
 ## Example Env params
 | Name | Value | Example |
